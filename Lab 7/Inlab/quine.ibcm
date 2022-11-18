@@ -1,0 +1,23 @@
+C009 000 	jmp 	start 	skip around the variables
+0001 001  	dw 		0 		int i = 0
+0016 002  	dw  	0 		int size		halt location
+0001 003 	dw		1 		int 1
+3000 004    dw		3000 		print line variable (iterate through using i)
+0000 005 	dw		0 		int zero
+0000 006	leave space for changes
+0000 007
+0000 008
+3005 009 	start	load zero
+4001 00A			store zero in i (reset i)
+3004 00B 			load 	funct adit 3000	form the instruction
+5001 00C			add i
+400E 00D 			store 	doit 	plant the instruction into the program
+300C 00E 	doit 	dw 	0
+1800 00F			printH
+3001 010			load i
+5003 011			add		i+=1
+4001 012			store i
+6002 013 			sub 
+D00B 014			jmpe	if difference is zero, then at end. loop once more
+E00B 015			jumpl 	if less than zero, then not at end. loop
+0000 016	end		halt

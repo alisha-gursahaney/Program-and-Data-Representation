@@ -1,0 +1,39 @@
+C00A 000			jmp 	start 	skip around the variables
+0000 001 	a		dw		0		int a
+0000 002 	b		dw		0   	int b
+0000 003 	c		dw		0   	int c
+0000 004	zero	dw		0   	store value zero
+0000 005 	sum		dw		0 		store sum value		
+0000 006 					leave space for changes
+0000 007 			
+0000 008
+0000 009
+1000 00A 	start	readH			read a
+4001 00B			store	a
+1000 00C 			readH			read b
+4002 00D 			store	b
+1000 00E 			readH			read c
+4003 00F			store	c
+3004 010 			load	zero
+4005 011			store	sum		sum = 0
+3005 012			load	sum
+5001 013			add		a 		sum += a
+4005 014			store 	sum		sum = a
+3005 015			load	sum
+5002 016			add		b 		sum += b
+4005 017			store	sum		sum = a+b
+3005 018			load	sum
+5003 019			add		c 		sum += c
+4005 01A 			store	sum 	sum = a+b+c
+3005 01B			load	sum
+3005 01C	end		load	sum
+1800 01D			printH
+D020 01E			jmpe			if sum = 0, goto end
+C00A 01F			jmp 			else, start over
+3001 020 			load 	a
+1800 021			printH
+3002 022			load	b
+1800 023			printH
+3003 024			load	c
+1800 025			printH
+0000 026			halt	
